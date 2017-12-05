@@ -6,11 +6,11 @@ const inputSelector = state => state.input;
 export const getAvg = createSelector(
     sumSelector,
     inputSelector,
-    (sum, input) => ({value: (sum + (input || 0)) / 2 })
+    (sum, input) => (sum + (input || 0)) / 2
 )
 
 export const getSum = createSelector(
     sumSelector,
     inputSelector,
-    (sum, input) => ({value: sum+(input || 0)})
+    (sum, input) => sum+(input || 0)
 )

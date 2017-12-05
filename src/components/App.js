@@ -4,9 +4,9 @@ import propTypes from 'prop-types'
 import * as ActionTypes from '../constants/actionTypes'
 import Button from './Button';
 import Numbers from './Numbers';
-import * as calcSelector from '../selectors/calcSelectors'
+import * as CalcSelector from '../selectors/calcSelectors'
 
-const App = ({sum, input, addition, subtraction, multiplication, division, c, cc}) => {
+const App = ({sum, input, plusSum, avg, addition, subtraction, multiplication, division, c, cc}) => {
   return (
     <div>
       Sum: {sum}
@@ -26,9 +26,9 @@ const App = ({sum, input, addition, subtraction, multiplication, division, c, cc
       <Button name={"CC"} callback={cc}/>
       <br/>
 
-      Sum(+): {calcSelector.getSum({sum: sum, input: input}).value}
+      Sum(+): {plusSum}
       <br/>
-      Avg: {calcSelector.getAvg({sum: sum, input: input}).value}
+      Avg: {avg}
       <br/>
     </div>
   )
@@ -37,6 +37,8 @@ const App = ({sum, input, addition, subtraction, multiplication, division, c, cc
 App.propTypes = {
   sum: propTypes.any.isRequired,
   input: propTypes.any,
+  plusSum: propTypes.any.isRequired,
+  avg: propTypes.any.isRequired,
   addition: propTypes.func.isRequired,
   subtraction: propTypes.func.isRequired, 
   multiplication: propTypes.func.isRequired, 
@@ -48,7 +50,9 @@ App.propTypes = {
 const mapStateToProps = state => {
    return {
      sum: state.sum,
-     input: state.input
+     input: state.input,
+     plusSum: CalcSelector.getSum(state),
+     avg: CalcSelector.getAvg(state)
    }
 }
 
