@@ -4,6 +4,7 @@ import propTypes from 'prop-types'
 import * as ActionTypes from '../constants/actionTypes'
 import Button from './Button';
 import Numbers from './Numbers';
+import * as calcSelector from '../selectors/calcSelectors'
 
 const App = ({sum, input, addition, subtraction, multiplication, division, c, cc}) => {
   return (
@@ -23,6 +24,12 @@ const App = ({sum, input, addition, subtraction, multiplication, division, c, cc
       <Button name={"/"} callback={division}/>
       <Button name={"C"} callback={c}/>
       <Button name={"CC"} callback={cc}/>
+      <br/>
+
+      Sum(+): {calcSelector.getSum({sum: sum, input: input}).value}
+      <br/>
+      Avg: {calcSelector.getAvg({sum: sum, input: input}).value}
+      <br/>
     </div>
   )
 }
@@ -30,7 +37,12 @@ const App = ({sum, input, addition, subtraction, multiplication, division, c, cc
 App.propTypes = {
   sum: propTypes.any.isRequired,
   input: propTypes.any,
-  addition: propTypes.func.isRequired
+  addition: propTypes.func.isRequired,
+  subtraction: propTypes.func.isRequired, 
+  multiplication: propTypes.func.isRequired, 
+  division: propTypes.func.isRequired, 
+  c: propTypes.func.isRequired, 
+  cc: propTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
@@ -40,7 +52,7 @@ const mapStateToProps = state => {
    }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     addition: () => { dispatch({type: ActionTypes.ADDITION})},
     subtraction: () => { dispatch({type: ActionTypes.SUBTRACTION})},
