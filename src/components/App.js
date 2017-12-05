@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types'
-import * as Actions from './constants/actionTypes'
+import * as ActionTypes from '../constants/actionTypes'
 import Button from './Button';
 import Numbers from './Numbers';
 
@@ -42,12 +42,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    addition: () => { dispatch({type: Actions.ADDITION})},
-    subtraction: () => { dispatch({type: Actions.SUBTRACTION})},
-    multiplication: () => { dispatch({type: Actions.MULTIPLICATION})},
-    division: () => { dispatch({type: Actions.DIVISION})},
-    c: () => { dispatch({type: Actions.C})},
-    cc: () => { dispatch({type: Actions.CC})}
+    addition: () => { dispatch({type: ActionTypes.ADDITION})},
+    subtraction: () => { dispatch({type: ActionTypes.SUBTRACTION})},
+    multiplication: () => { dispatch({type: ActionTypes.MULTIPLICATION})},
+    division: () => { dispatch({type: ActionTypes.DIVISION})},
+    c: () => { dispatch({type: ActionTypes.C})},
+    cc: () => { dispatch({type: ActionTypes.CC})}
   }
 }
 

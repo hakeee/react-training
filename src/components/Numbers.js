@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import * as Actions from './constants/actionTypes'
+import * as ActionTypes from '../constants/actionTypes'
 import Button from './Button';
 
 class Numbers extends PureComponent {
@@ -26,12 +26,11 @@ class Numbers extends PureComponent {
     }
 }
 
-
-const mapStateToProps = () => { return {} }
+const mapStateToProps = () => {};
   
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        callback: (value) => dispatch({type: Actions.APPEND_INPUT, input: value})
+        callback: (value) => dispatch({type: ActionTypes.APPEND_INPUT, input: value})
     }
 }
 

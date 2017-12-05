@@ -1,4 +1,4 @@
-import * as Actions from '../constants/actionTypes'
+import * as ActionTypes from '../constants/actionTypes'
 
 const initialState = {
     sum: 0,
@@ -7,42 +7,42 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case Actions.ADDITION:
+        case ActionTypes.ADDITION:
             return {
                 ...state,
                 sum: Number(state.sum) + ((state.input !== null) ? Number(state.input) : 0),
                 input: null 
             }
-        case Actions.SUBTRACTION:
+        case ActionTypes.SUBTRACTION:
             return {
                 ...state,
                 sum: Number(state.sum) - ((state.input !== null) ? Number(state.input) : 0),
                 input: null 
             }
-        case Actions.MULTIPLICATION:
+        case ActionTypes.MULTIPLICATION:
             return {
                 ...state,
                 sum: Number(state.sum) * ((state.input !== null) ? Number(state.input) : 0),
                 input: null 
             }
-        case Actions.DIVISION:
+        case ActionTypes.DIVISION:
             return {
                 ...state,
                 sum: Number(state.sum) / ((state.input !== null) ? Number(state.input) : 0),
                 input: null 
             }
-        case Actions.C:
+        case ActionTypes.C:
             return {
                 ...state,
                 input: null 
             }
-        case Actions.CC:
+        case ActionTypes.CC:
             return {
                 ...state,
                 sum: 0,
                 input: null 
             }
-        case Actions.APPEND_INPUT:
+        case ActionTypes.APPEND_INPUT:
             return {
                 ...state,
                 input: (state.input !== null) ? (String(state.input).concat(action.input)) : action.input, 
